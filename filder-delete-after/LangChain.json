@@ -1,0 +1,66 @@
+{ 
+"type": "page/component/globalCss/index.tsx/NotFound.tsx", 
+"fileName": "filename",
+"dir":"directory name, example src/pages , src/components/SomeComponent ", 
+"value": "JSX code" 
+}
+
+
+{ 
+"type": "page", 
+"fileName": "Dashboard.tsx", 
+"dir":"src/pages/Dashboard",
+"value": "import .... JSX Code" 
+}
+
+{ 
+"type": "component", 
+"fileName": "Header.tsx", 
+"dir":"src/component/Header",
+"value": "import .... JSX Code" 
+}
+
+
+{ 
+"type": "globalCss", 
+"fileName": "index.css", 
+"dir":"src/index.css",
+"value": "@layer base {
+  :root {
+    --background: 248 250% 98%;
+    --foreground: 230 15% 15%;" 
+}
+
+// Lang Chani
+
+[
+  {
+    "user": "Moshe",
+    "msg": "Create SocialSpark Marketing App",
+    "content": {}
+  },
+  {
+    "user": "Moshe",
+    "msg": "Here is the Plan",
+    "content": {
+      "project_name": "SocialSpark Marketing App",
+      "initial_blueprint_md": "SocialSpark Marketing App\n\n## Core Features:\n\n- AI Content Generator: Automatically create engaging captions, posts, and ad copy tailored for platforms like Facebook, Instagram, Twitter, and LinkedIn.\n- Hashtag Assistant: Suggest trending and relevant hashtags based on topic and platform.\n- Content Scheduler: Plan and schedule posts across multiple platforms using a visual calendar.\n- Multi-Platform Publishing: Publish content directly to Facebook, Instagram, LinkedIn, and more from a unified dashboard.\n- Brand Voice Customization: Train the AI to match brand tone, writing style, and formatting preferences.\n- Analytics Overview: View engagement metrics, performance comparisons, and growth trends across channels.\n- Team Collaboration: Invite teammates to draft, edit, approve, and comment on content.\n\n## Style Guidelines:\n\n- Primary color: Vibrant blue (#3B82F6) for energy and clarity.\n- Background color: Soft gray (#F8FAFC) to maintain focus on content.\n- Accent color: Coral orange (#FB7185) for actionable elements like buttons and highlights.\n- Headline font: 'Poppins' for a bold, modern feel; body font: 'Inter' for readability.\n- Icons: Platform-specific icons (e.g., FB, IG, LI) with hover animations.\n- Clean dashboard-style layout with card-based modules and mobile responsiveness.\n- Smooth transitions for scheduling, previews, and toggles to enhance UX.\n"
+    }
+  },
+  {
+    "user": "Moshe",
+    "msg": "Sound Good",
+    "content": {}
+  },
+  {
+    "user": "Moshe",
+    "msg": "Creating Dashboard",
+    "content": {
+      "type": "page",
+      "fileName": "Dashboard.tsx",
+      "dir": "src/pages/Dashboard",
+      "value": "import React from 'react';\n\nexport default function Dashboard() {\n  return (\n    <div className='p-4'>\n      <h1 className='text-2xl font-bold mb-4'>Welcome to SocialSpark</h1>\n      <p>This is your central dashboard for managing all social campaigns.</p>\n    </div>\n  );\n}"
+    }
+  }
+]
+
