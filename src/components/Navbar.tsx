@@ -6,7 +6,7 @@ export default function Navbar(){
         <a href="/" className="font-bold">App</a>
         <nav className="ml-auto flex items-center gap-2">
           <a className="underline text-primary" href="/">Home</a>
-          <Button asChild><a href="/settings">Settings</a></Button>
+          <Button asChild><a href="/settings">ssssssssss</a></Button>
         </nav>
       </div>
     </header>
