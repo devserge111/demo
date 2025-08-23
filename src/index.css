@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { --background: 228 33% 97%; --foreground: 222 47% 11%; --text: var(--foreground); /* alias used by text-text */ --card: 0 0% 100%; --card-foreground: var(--foreground); --popover: 0 0% 100%; --popover-foreground: var(--foreground); --primary: 231 48% 48%; --primary-foreground: 0 0% 100%; --secondary: 200 18% 46%; --secondary-foreground: 210 40% 98%; /* Accent (replace here to switch globally) */ --accent: 291 64% 42%; /* #9C27B0 */ --accent-foreground: 0 0% 100%; --muted: 210 40% 96%; --muted-foreground: 215 16% 47%; --destructive: 4 90% 58%; --destructive-foreground: 0 0% 100%; --border: 214 32% 91%; --input: 214 32% 91%; --ring: var(--primary); --radius: 0.75rem; }
+
+/* ===== Dark Theme (class-based) ===== */
+.dark { --background: 222 47% 5%; --foreground: 210 40% 98%; --text: var(--foreground); --card: 222 47% 7%; --card-foreground: 210 40% 98%; --popover: 222 47% 7%; --popover-foreground: 210 40% 98%; --primary: 231 48% 58%; --primary-foreground: 222 47% 7%; --secondary: 217 33% 18%; --secondary-foreground: 210 40% 98%; --accent: 291 64% 55%; /* brighter in dark */ --accent-foreground: 222 47% 7%; --muted: 217 33% 18%; --muted-foreground: 215 20% 65%; --destructive: 0 63% 45%; --destructive-foreground: 210 40% 98%; --border: 217 33% 18%; --input: 217 33% 18%; --ring: var(--primary); }
+
+/* Base layer using @apply (now works everywhere) */
+@layer base {
+  * { @apply border-border; }
+  body { @apply bg-background text-text; }
+  h1,h2,h3,h4,h5,h6 { @apply font-bold; }
+  a { @apply underline text-primary; }
+}
+
+/* in src/index.css (after @tailwind base; components; utilities) */
+a { text-decoration: none; color: inherit; }
+/* or Tailwind: */
+a { @apply no-underline text-inherit; }
