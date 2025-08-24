@@ -12,12 +12,16 @@ import { PopoverContent } from "@/components/ui/popover";
 import { PopoverTrigger } from "@/components/ui/popover";
 import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
+import FacebookPreview from './FacebookPreview';
+import InstagramPreview from './InstagramPreview';
 
 export default function Features() {
   const [toneOfVoice, setToneOfVoice] = useState('');
   const [textLength, setTextLength] = useState('');
   const [visualStyle, setVisualStyle] = useState('');
   const [date, setDate] = React.useState<Date | undefined>(new Date());
+  const [facebookContent, setFacebookContent] = useState('Facebook post content here.');
+  const [instagramContent, setInstagramContent] = useState('Instagram post content here.');
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -86,6 +90,10 @@ export default function Features() {
             </div>
             <Button type="submit">Apply Customizations</Button>
           </form>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <FacebookPreview content={facebookContent} />
+            <InstagramPreview content={instagramContent} />
+          </div>
         </CardContent>
       </Card>
     </div>

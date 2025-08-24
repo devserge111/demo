@@ -1,37 +1,42 @@
-export const generatePost = (businessType: string, targetAudience: string, campaignGoal: string) => {
-  const postIdeas = [
-    `[${businessType}] New post idea for [${targetAudience}] about [${campaignGoal}].`,
-    `Another post idea for [${businessType}] targeting [${targetAudience}] to achieve [${campaignGoal}].`,
-    `Engaging content suggestion for [${businessType}] audience [${targetAudience}] focused on [${campaignGoal}].`,
+// src/services/postGenerator.ts
+
+interface PostGeneratorInput {
+  businessType: string;
+  targetAudience: string;
+  campaignGoal: string;
+  toneOfVoice?: string;
+  textLength?: string;
+  visualStyle?: string;
+}
+
+interface PostSuggestion {
+  facebookCaption: string;
+  instagramCaption: string;
+  hashtags: string[];
+  imageSuggestion: string;
+  videoSuggestion: string;
+}
+
+export function generatePostSuggestions(input: PostGeneratorInput): PostSuggestion[] {
+  // Placeholder implementation for post generation logic
+  const { businessType, targetAudience, campaignGoal } = input;
+
+  const suggestions: PostSuggestion[] = [
+    {
+      facebookCaption: `Check out our new ${businessType} product! Designed for ${targetAudience}. #NewProduct #LimitedTimeOffer`, 
+      instagramCaption: `✨ Introducing our latest ${businessType} product! Perfect for ${targetAudience}. Link in bio!`, 
+      hashtags: ['newproduct', 'limitedtimeoffer', businessType.toLowerCase()],
+      imageSuggestion: 'product_image.jpg',
+      videoSuggestion: 'product_demo.mp4',
+    },
+    {
+      facebookCaption: `Boost your ${businessType}'s brand awareness with our expert tips!`, 
+      instagramCaption: `💡 Pro-tips to elevate your ${businessType} brand!`, 
+      hashtags: ['brandawareness', 'marketingtips', businessType.toLowerCase()],
+      imageSuggestion: 'marketing_tips.jpg',
+      videoSuggestion: 'marketing_tips.mp4',
+    },
   ];
 
-  const captions = [
-    `Check out this amazing offer for our [${targetAudience}]! [${campaignGoal}] at [${businessType}].`,
-    `We're excited to announce our new [${campaignGoal}] for [${targetAudience}] at [${businessType}].`,
-    `Don't miss out! [${campaignGoal}] is here for our valued [${targetAudience}] at [${businessType}].`,
-  ];
-
-  const hashtags = [
-    `#[${businessType.replace(/\s/g, '')}]`, `#${targetAudience.replace(/\s/g, '')}`, `#${campaignGoal.replace(/\s/g, '')}`, '#socialmedia', '#marketing'
-  ];
-
-  const imageSuggestions = [
-    'Image of happy customers using your product.',
-    'Behind-the-scenes video of your team working.',
-    'Eye-catching graphic promoting your latest offer.',
-  ];
-
-  const videoSuggestions = [
-    'Short video showcasing your product benefits.',
-    'Customer testimonial video.',
-    'Animated explainer video about your services.',
-  ];
-
-  return {
-    postIdeas: postIdeas[Math.floor(Math.random() * postIdeas.length)],
-    captions: captions[Math.floor(Math.random() * captions.length)],
-    hashtags: hashtags.join(' '),
-    imageSuggestions: imageSuggestions[Math.floor(Math.random() * imageSuggestions.length)],
-    videoSuggestions: videoSuggestions[Math.floor(Math.random() * videoSuggestions.length)],
-  };
-};
+  return suggestions;
+}
