@@ -13,6 +13,7 @@ export default function AnalyticsDashboard() {
         </CardHeader>
         <CardContent>
           <p>Post Engagement Metrics and Trending Content Suggestions</p>
+          {/* Implement analytics charts and trending content suggestions here */}
         </CardContent>
       </Card>
     </div>

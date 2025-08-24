@@ -12,17 +12,32 @@ import { Card } from "@/components/ui/card";
 import { CardHeader } from "@/components/ui/card";
 import { CardContent } from "@/components/ui/card";
 import { CardTitle } from "@/components/ui/card";
+import { postGenerator } from '@/services/postGenerator';
 
 export default function Home() {
   const [businessType, setBusinessType] = useState('');
   const [targetAudience, setTargetAudience] = useState('');
   const [campaignGoal, setCampaignGoal] = useState('');
+  const [generatedPosts, setGeneratedPosts] = useState<string[]>([]);
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     console.log('Business Type:', businessType);
     console.log('Target Audience:', targetAudience);
     console.log('Campaign Goal:', campaignGoal);
+
+    const postData = {
+      businessType,
+      targetAudience,
+      campaignGoal,
+    };
+
+    try {
+      const posts = await postGenerator(postData);
+      setGeneratedPosts(posts);
+    } catch (error) {
+      console.error("Error generating posts:", error);
+    }
   };
 
   return (
@@ -67,6 +82,17 @@ export default function Home() {
             </div>
             <Button type="submit">Generate Posts</Button>
           </form>
+
+          {generatedPosts.length > 0 && (
+            <div className="mt-4">
+              <h3>Generated Posts:</h3>
+              <ul>
+                {generatedPosts.map((post, index) => (
+                  <li key={index}>{post}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </CardContent>
       </Card>
     </div>

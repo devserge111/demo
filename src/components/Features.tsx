@@ -14,6 +14,7 @@ import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
 import FacebookPreview from './FacebookPreview';
 import InstagramPreview from './InstagramPreview';
+import { Textarea } from "@/components/ui/textarea";
 
 export default function Features() {
   const [toneOfVoice, setToneOfVoice] = useState('');
@@ -91,8 +92,26 @@ export default function Features() {
             <Button type="submit">Apply Customizations</Button>
           </form>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FacebookPreview content={facebookContent} />
-            <InstagramPreview content={instagramContent} />
+            <div>
+              <Label htmlFor="facebookContent">Facebook Content</Label>
+              <Textarea
+                id="facebookContent"
+                value={facebookContent}
+                onChange={(e) => setFacebookContent(e.target.value)}
+                placeholder="Enter Facebook post content"
+              />
+              <FacebookPreview content={facebookContent} />
+            </div>
+            <div>
+              <Label htmlFor="instagramContent">Instagram Content</Label>
+              <Textarea
+                id="instagramContent"
+                value={instagramContent}
+                onChange={(e) => setInstagramContent(e.target.value)}
+                placeholder="Enter Instagram post content"
+              />
+              <InstagramPreview content={instagramContent} />
+            </div>
           </div>
         </CardContent>
       </Card>
