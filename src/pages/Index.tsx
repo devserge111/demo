@@ -25,16 +25,14 @@ import { Label } from "@/components/ui/label";
 
 function LandingSection({ title, description, ctaText, imageUrl }: any) {
   return (
-    <section className="py-12">
-      <div className="container mx-auto flex items-center">
-        <div className="w-1/2">
+    <section className="landing-section">
+      <div className="container">
+        <div className="text-container">
           <h2 className="text-3xl font-bold mb-4">{title}</h2>
           <p className="text-lg text-gray-700 mb-6">{description}</p>
           <Button>{ctaText}</Button>
         </div>
-        <div className="w-1/2">
-          <img src={imageUrl} alt={title} className="rounded-lg shadow-md" />
-        </div>
+        <img src={imageUrl} alt={title} className="rounded-lg shadow-md" />
       </div>
     </section>
   );
