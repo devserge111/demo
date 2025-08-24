@@ -24,7 +24,7 @@ import { SelectItem } from "@/components/ui/select";
 import { SelectValue } from "@/components/ui/select";
 import { Sparkles, Plus, Rocket, Clock, TrendingUp, Layers, Search } from "lucide-react";
 import Navbar from '@/components/Navbar';
-import Features from './Features';
+import Features from '@/components/Features';
 import Home from '@/components/Home';
 import AnalyticsDashboard from '@/components/AnalyticsDashboard';
 
