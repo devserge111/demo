@@ -24,6 +24,8 @@ export default function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/features" element={<Features />} />
             <Route path="/analytics" element={<AnalyticsDashboard />} />
+            <Route path="/signin" element={<Index activeTab="auth" initialAuthTab="signin" />} />
+            <Route path="/signup" element={<Index activeTab="auth" initialAuthTab="signup" />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

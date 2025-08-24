@@ -84,8 +84,14 @@ function SignInForm() {
   );
 }
 
-export default function Index() {
-  const [activeTab, setActiveTab] = useState("landing");
+interface IndexProps {
+  activeTab?: string;
+  initialAuthTab?: 'signin' | 'signup';
+}
+
+export default function Index({ activeTab: initialActiveTab, initialAuthTab }: IndexProps = {}) {
+  const [activeTab, setActiveTab] = useState(initialActiveTab ? "auth" : initialActiveTab || "landing");
+  const [authTab, setAuthTab] = useState(initialAuthTab || 'signin');
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -140,10 +146,18 @@ export default function Index() {
           </TabsContent>
 
           <TabsContent value="auth">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <SignUpForm />
-              <SignInForm />
-            </div>
+            <Tabs value={authTab} onValueChange={setAuthTab}>
+              <TabsList className="grid w-full grid-cols-2">
+                <TabsTrigger value="signin">Sign In</TabsTrigger>
+                <TabsTrigger value="signup">Sign Up</TabsTrigger>
+              </TabsList>
+              <TabsContent value="signin">
+                <SignInForm />
+              </TabsContent>
+              <TabsContent value="signup">
+                <SignUpForm />
+              </TabsContent>
+            </Tabs>
           </TabsContent>
         </Tabs>
       </main>
