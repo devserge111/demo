@@ -18,9 +18,10 @@ import { SelectItem } from "@/components/ui/select";
 import { SelectValue } from "@/components/ui/select";
 import { Sparkles, Rocket, Search } from "lucide-react";
 import Navbar from '@/components/Navbar';
-import Features from '@/components/Features';
 import Home from '@/components/Home';
 import AnalyticsDashboard from '@/components/AnalyticsDashboard';
+import Features from '@/components/Features';
+import { Label } from "@/components/ui/label";
 
 function LandingSection({ title, description, ctaText, imageUrl }: any) {
   return (
