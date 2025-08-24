@@ -19,3 +19,28 @@
 a { text-decoration: none; color: inherit; }
 /* or Tailwind: */
 a { @apply no-underline text-inherit; }
+
+/* Additional styles for landing sections */
+.landing-section {
+  @apply py-12;
+}
+
+.landing-section .container {
+  @apply mx-auto flex items-center;
+}
+
+.landing-section .container .w-1/2 {
+  @apply w-1/2;
+}
+
+.landing-section h2 {
+  @apply text-3xl font-bold mb-4;
+}
+
+.landing-section p {
+  @apply text-lg text-gray-700 mb-6;
+}
+
+.landing-section img {
+  @apply rounded-lg shadow-md;
+}

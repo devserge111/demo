@@ -1,10 +1,4 @@
 // src/pages/Index.tsx
-// Variant templates for different types of apps
-import { installRuntimeReporter } from "@/runtime-reporter";
-// Inject the reporter — projectId is usually injected at build/deploy time
-//@ts-ignore
-installRuntimeReporter(import.meta.env.VITE_PROJECT_ID || "unknown");
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -22,88 +16,116 @@ import { SelectTrigger } from "@/components/ui/select";
 import { SelectContent } from "@/components/ui/select";
 import { SelectItem } from "@/components/ui/select";
 import { SelectValue } from "@/components/ui/select";
-import { Sparkles, Plus, Rocket, Clock, TrendingUp, Layers, Search } from "lucide-react";
+import { Sparkles, Rocket, Search } from "lucide-react";
 import Navbar from '@/components/Navbar';
 import Features from '@/components/Features';
 import Home from '@/components/Home';
 import AnalyticsDashboard from '@/components/AnalyticsDashboard';
 
-// Template data variants for different app types
-const templateSets = {
-  general: [
-    { title: "Starter Layout", category: "UI", description: "Clean shell for pages", tags: ["layout", "shell"] },
-    { title: "CRUD Module", category: "Data", description: "List, create, edit, delete", tags: ["crud", "forms"] },
-    { title: "Auth Screens", category: "Auth", description: "Sign in / Sign up / Reset", tags: ["auth", "ui"] },
-    { title: "Analytics Panel", category: "Insights", description: "Charts & metrics", tags: ["charts", "dashboard"] },
-  ],
-  ecommerce: [
-    { title: "Product Grid", category: "Shop", description: "Grid display for products", tags: ["shop", "catalog"] },
-    { title: "Checkout Flow", category: "Shop", description: "Cart, payment, confirmation", tags: ["checkout", "payments"] },
-    { title: "Landing Hero", category: "Marketing", description: "Hero banner with CTA", tags: ["hero", "cta"] },
-    { title: "Promo Banner", category: "Marketing", description: "Highlight discounts", tags: ["promo", "banner"] },
-  ],
-  saas: [
-    { title: "Dashboard Overview", category: "UI", description: "KPIs and charts", tags: ["dashboard", "stats"] },
-    { title: "Team Management", category: "Admin", description: "Invite and manage users", tags: ["team", "admin"] },
-    { title: "Billing Settings", category: "Account", description: "Manage subscriptions", tags: ["billing", "plans"] },
-    { title: "API Keys Panel", category: "Developer", description: "Generate & manage keys", tags: ["api", "developer"] },
-  ],
-};
-
-function TemplateCard({ title, category, description, tags }: any) {
+function LandingSection({ title, description, ctaText, imageUrl }: any) {
   return (
-    <Card className="hover:shadow-md transition-shadow">
+    <section className="py-12">
+      <div className="container mx-auto flex items-center">
+        <div className="w-1/2">
+          <h2 className="text-3xl font-bold mb-4">{title}</h2>
+          <p className="text-lg text-gray-700 mb-6">{description}</p>
+          <Button>{ctaText}</Button>
+        </div>
+        <div className="w-1/2">
+          <img src={imageUrl} alt={title} className="rounded-lg shadow-md" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SignUpForm() {
+  return (
+    <Card>
       <CardHeader>
-        <CardTitle className="flex items-center justify-between">
-          <span>{title}</span>
-          <Badge variant="secondary">{category}</Badge>
-        </CardTitle>
+        <CardTitle>Sign Up</CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-sm text-muted-foreground mb-3">{description}</p>
-        <div className="flex flex-wrap gap-2">
-          {tags?.map((t: string) => (
-            <Badge key={t} variant="outline">{t}</Badge>
-          ))}
-        </div>
+        <form className="grid gap-4">
+          <div>
+            <Label htmlFor="email">Email</Label>
+            <Input type="email" id="email" placeholder="Your email" />
+          </div>
+          <div>
+            <Label htmlFor="password">Password</Label>
+            <Input type="password" id="password" placeholder="Password" />
+          </div>
+          <Button type="submit">Sign Up</Button>
+        </form>
+      </CardContent>
+    </Card>
+  );
+}
+
+function SignInForm() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Sign In</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <form className="grid gap-4">
+          <div>
+            <Label htmlFor="email">Email</Label>
+            <Input type="email" id="email" placeholder="Your email" />
+          </div>
+          <div>
+            <Label htmlFor="password">Password</Label>
+            <Input type="password" id="password" placeholder="Password" />
+          </div>
+          <Button type="submit">Sign In</Button>
+        </form>
       </CardContent>
     </Card>
   );
 }
 
 export default function Index() {
-  const [activeTab, setActiveTab] = useState("overview");
-  const [appType, setAppType] = useState<keyof typeof templateSets>("general");
-
-  const templates = templateSets[appType];
+  const [activeTab, setActiveTab] = useState("landing");
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <main className="container mx-auto px-6 py-8">
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="grid w-full grid-cols-4 mb-8">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-5 mb-8">
+            <TabsTrigger value="landing">Landing</TabsTrigger>
             <TabsTrigger value="home">Home</TabsTrigger>
             <TabsTrigger value="features">Features</TabsTrigger>
             <TabsTrigger value="analytics">Analytics</TabsTrigger>
+            <TabsTrigger value="auth">Auth</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="overview">
-            <div className="text-center">
-              <h1 className="text-4xl font-bold mb-4">Universal App Starter</h1>
-              <p className="mb-4">Switch between template sets for different application types.</p>
-              <Select value={appType} onValueChange={(v) => setAppType(v as keyof typeof templateSets)}>
-                <SelectTrigger className="w-60 mx-auto">
-                  <SelectValue placeholder="Select App Type" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="general">General</SelectItem>
-                  <SelectItem value="ecommerce">E-Commerce</SelectItem>
-                  <SelectItem value="saas">SaaS</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+          <TabsContent value="landing">
+            <LandingSection
+              title="Engage Your Audience"
+              description="Create captivating social media posts effortlessly."
+              ctaText="Get Started Now"
+              imageUrl="https://via.placeholder.com/600x400"
+            />
+            <LandingSection
+              title="Automate Your Content"
+              description="Schedule posts and analyze performance with ease."
+              ctaText="Learn More"
+              imageUrl="https://via.placeholder.com/600x400"
+            />
+            <LandingSection
+              title="Customize Your Brand"
+              description="Tailor your posts to match your unique brand voice."
+              ctaText="Explore Features"
+              imageUrl="https://via.placeholder.com/600x400"
+            />
+            <LandingSection
+              title="Drive Results"
+              description="Track engagement and optimize your social media strategy."
+              ctaText="View Analytics"
+              imageUrl="https://via.placeholder.com/600x400"
+            />
           </TabsContent>
 
           <TabsContent value="home">
@@ -116,6 +138,13 @@ export default function Index() {
 
           <TabsContent value="analytics">
             <AnalyticsDashboard />
+          </TabsContent>
+
+          <TabsContent value="auth">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <SignUpForm />
+              <SignInForm />
+            </div>
           </TabsContent>
         </Tabs>
       </main>
