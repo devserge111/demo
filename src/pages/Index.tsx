@@ -7,12 +7,24 @@ installRuntimeReporter(import.meta.env.VITE_PROJECT_ID || "unknown");
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card } from "@/components/ui/card";
+import { CardContent } from "@/components/ui/card";
+import { CardHeader } from "@/components/ui/card";
+import { CardTitle } from "@/components/ui/card";
+import { Tabs } from "@/components/ui/tabs";
+import { TabsContent } from "@/components/ui/tabs";
+import { TabsList } from "@/components/ui/tabs";
+import { TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@/components/ui/select";
+import { Select } from "@/components/ui/select";
+import { SelectTrigger } from "@/components/ui/select";
+import { SelectContent } from "@/components/ui/select";
+import { SelectItem } from "@/components/ui/select";
+import { SelectValue } from "@/components/ui/select";
 import { Sparkles, Plus, Rocket, Clock, TrendingUp, Layers, Search } from "lucide-react";
+import Navbar from '@/components/Navbar';
+import Features from './Features';
 
 // Template data variants for different app types
 const templateSets = {
@@ -35,29 +47,6 @@ const templateSets = {
     { title: "API Keys Panel", category: "Developer", description: "Generate & manage keys", tags: ["api", "developer"] },
   ],
 };
-
-function Header() {
-  return (
-    <header className="border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto flex items-center justify-between px-6 py-4">
-        <div className="flex items-center gap-2">
-          <Rocket className="h-5 w-5" />
-          <span className="font-bold">YourApp</span>
-        </div>
-        <div className="hidden md:flex items-center gap-2">
-          <Input placeholder="Search…" className="w-72" />
-          <Button variant="secondary"><Search className="mr-2 h-4 w-4" />Search</Button>
-        </div>
-        <div className="flex items-center gap-2">
-          <Button variant="outline">Sign in</Button>
-          <Button>
-            <Sparkles className="mr-2 h-4 w-4" /> Get Started
-          </Button>
-        </div>
-      </div>
-    </header>
-  );
-}
 
 function TemplateCard({ title, category, description, tags }: any) {
   return (
@@ -88,7 +77,7 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Header />
+      <Navbar />
       <main className="container mx-auto px-6 py-8">
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           <TabsList className="grid w-full grid-cols-4 mb-8">
