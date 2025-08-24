@@ -25,6 +25,8 @@ import { SelectValue } from "@/components/ui/select";
 import { Sparkles, Plus, Rocket, Clock, TrendingUp, Layers, Search } from "lucide-react";
 import Navbar from '@/components/Navbar';
 import Features from './Features';
+import Home from '@/components/Home';
+import AnalyticsDashboard from '@/components/AnalyticsDashboard';
 
 // Template data variants for different app types
 const templateSets = {
@@ -82,9 +84,9 @@ export default function Index() {
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           <TabsList className="grid w-full grid-cols-4 mb-8">
             <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="templates">Templates</TabsTrigger>
-            <TabsTrigger value="create">Create</TabsTrigger>
-            <TabsTrigger value="activity">Activity</TabsTrigger>
+            <TabsTrigger value="home">Home</TabsTrigger>
+            <TabsTrigger value="features">Features</TabsTrigger>
+            <TabsTrigger value="analytics">Analytics</TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview">
@@ -104,12 +106,16 @@ export default function Index() {
             </div>
           </TabsContent>
 
-          <TabsContent value="templates">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {templates.map((t) => (
-                <TemplateCard key={t.title} {...t} />
-              ))}
-            </div>
+          <TabsContent value="home">
+            <Home />
+          </TabsContent>
+
+          <TabsContent value="features">
+            <Features />
+          </TabsContent>
+
+          <TabsContent value="analytics">
+            <AnalyticsDashboard />
           </TabsContent>
         </Tabs>
       </main>

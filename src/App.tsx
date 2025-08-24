@@ -1,30 +1,3 @@
-// import React from 'react';
-// import { BrowserRouter, Routes, Route } from 'react-router-dom';
-// import Home from '@/pages/Home';
-// import ClientManagement from '@/pages/ClientManagement';
-// import ServiceManagement from '@/pages/ServiceManagement';
-// import CalendarPage from '@/pages/Calendar';
-// import { Navbar } from '@/components/ui/Navbar';
-
-// const App: React.FC = () => {
-//   return (
-//     <BrowserRouter>
-//       <div className="flex h-screen">
-//         <Navbar />
-//         <Routes>
-//           <Route path="/" element={<Home />} />
-//           <Route path="/clients" element={<ClientManagement />} />
-//           <Route path="/services" element={<ServiceManagement />} />
-//           <Route path="/calendar" element={<CalendarPage />} />
-//         </Routes>
-//       </div>
-//     </BrowserRouter>
-//   );
-// };
-
-// export default App;
-
-
 // src/App.tsx
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -45,6 +18,9 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Index />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="/home" element={<Index />} />
+            <Route path="/features" element={<Index />} />
+            <Route path="/analytics" element={<Index />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
